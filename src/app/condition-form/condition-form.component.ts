@@ -35,6 +35,28 @@ export interface ConditionFormComponentData {
 export class ConditionFormComponent
 
   implements ControlValueAccessor, OnDestroy, OnInit {
+    checkOptions = [
+      { label: 'Apple', value: 'Apple', checked: true },
+      { label: 'Pear', value: 'Pear' },
+      { label: 'Orange', value: 'Orange' }
+    ];
+    items = [
+      'Short Answer',
+      'Paragraph',
+      'Multiple Choices',
+      'CheckBoxes',
+      'Dropdown',
+      'File Upload',
+      'Linear scal',
+      'Multiple choise grid',
+      'Checkbox Grid',
+      'Date',
+      'time',
+    ];
+    shortAnswer:any
+    multiple_choices:any
+    selectedCheckboxes:any
+    selectedDropdown:any
   @Input()
   formLabel: string | number = "Label";
 
