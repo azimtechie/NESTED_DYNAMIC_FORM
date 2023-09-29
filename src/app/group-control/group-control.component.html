@@ -1,0 +1,62 @@
+<form [formGroup]="_form">
+  <div class="group_control_form">
+    <label class="switch_label" for="switchValue">Require</label>
+    <nz-switch class=" mb-3" [(ngModel)]="switchValue"></nz-switch>
+    <div class="row border template_search my-3 text-start">
+      <h6 class="col col-2">{{ formLabel }}</h6>
+      <input
+      class="col col-10"
+      nz-input
+      placeholder="Enter Travel Type"
+      [(ngModel)]="selectedValue"
+    />
+    </div>
+    <div>
+      <ng-container formArrayName="conditions">
+        <app-condition-form
+          *ngFor="let c of _conditionsFormArray?.controls; index as j"
+          (remove)="_deleteCondition(j)"
+          [formControlName]="j"
+          [formLabel]="'Control Type'"
+        >
+        </app-condition-form>
+      </ng-container>
+      <app-action-buttons-bar
+        (remove)="remove.emit()"
+        (addGroup)="_addGroup()"
+        (addCondition)="_addCondition()"
+      >
+      </app-action-buttons-bar>
+
+      <ng-container formArrayName="groups">
+        <app-group-control
+          *ngFor="let s of _groupsFormArray?.controls; index as i"
+          (remove)="_deleteGroupFromArray(i)"
+          [formControlName]="i"
+          [formLabel]="'Label '"
+        >
+        </app-group-control>
+      </ng-container>
+    </div>
+  </div>
+  <div class="d-flex gap-2 justify-content-end">
+      <button
+        nz-button
+        nzType="primary"
+        (click)="_addGroup()"
+        [nzSize]="'large'"
+      >
+        +
+      </button>
+
+    <button
+      nz-button
+      nzDanger
+      nzType="primary"
+      (click)="remove.emit()"
+      [nzSize]="'large'"
+    >
+      -
+    </button>
+  </div>
+</form>

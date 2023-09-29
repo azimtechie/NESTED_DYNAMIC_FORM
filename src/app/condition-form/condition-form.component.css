@@ -1,0 +1,10 @@
+nz-select {
+  width: 200px;
+}
+.form_description {
+  color: #9f9ca4;
+}
+.control_Type_field{
+  display: flex;
+  justify-content: space-between;
+}

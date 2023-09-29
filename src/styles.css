@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+/* .ant-btn-secondary:hover{
+    color: #1890ff;
+    background-color: white;
+} */
+
+/* .ant-btn-primary{
+    color: #1890ff;
+    background-color: white;
+}
+.ant-btn-primary:hover{
+    color: white;
+    background-color: #1890ff;
+} */
+
+.row{
+    --bs-gutter-x:0
+}
+
+.ant-select{
+    display: flex;
+    align-items: center !important;
+}

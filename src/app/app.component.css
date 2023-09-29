@@ -1,0 +1,27 @@
+.template_search {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid black;
+}
+.main_form_container {
+  padding: 20px 10px;
+  border: 1px solid black;
+  margin: 10px;
+}
+.header_container{
+    padding: 10px;
+    /* margin: 10px; */
+    border: 1px solid black;
+}
+.form_description {
+  color: #9f9ca4;
+}
+nz-select {
+  width: 200px;
+}
+.ant-input {
+  /* width: auto !important; */
+  width: 200px;
+}

@@ -1,0 +1,15 @@
+nz-select {
+  width: 200px;
+}
+.group_control_form {
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid black ;
+}
+.ant-input {
+  /* width: auto !important; */
+  width: 200px;
+}
+.switch_label{
+  margin-right: 8px;
+}

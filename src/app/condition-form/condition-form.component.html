@@ -1,0 +1,27 @@
+<form class="control_form border" [formGroup]="_form">
+  <div class="row template_search my-3 text-start">
+    <h6 class="col col-2">{{ formLabel }}</h6>
+    <nz-select
+      class="col col-2"
+      nzShowSearch
+      nzAllowClear
+      formControlName="variable"
+      nzPlaceHolder="Select Control"
+      [(ngModel)]="selectedValue"
+    >
+    <nz-option nzLabel="Short Answer" nzValue="short-answer"></nz-option>
+    <nz-option nzLabel="Paragraph" nzValue="paragraph"></nz-option>
+    </nz-select>
+    <div class="col col-8 text-end">
+      <button
+        nz-button
+        nzDanger
+        nzType="primary"
+        (click)="remove.emit()"
+        [nzSize]="'large'"
+      >
+        -
+      </button>
+    </div>
+  </div>
+</form>

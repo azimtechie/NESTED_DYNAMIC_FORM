@@ -1,0 +1,13 @@
+button {
+  cursor: pointer;
+}
+
+.button_bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top:8px
+}
+
+.container button:not(:last-of-type) {
+  margin-right: 5px;
+}
