@@ -5,74 +5,96 @@ import {
   Output,
   forwardRef,
   EventEmitter,
-  OnInit
-} from "@angular/core";
+  OnInit,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormGroup,
   FormBuilder,
-  NG_VALUE_ACCESSOR
-} from "@angular/forms";
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+  NG_VALUE_ACCESSOR,
+  FormArray,
+} from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export interface ConditionFormComponentData {
   variable: any;
 }
 
 @Component({
-  selector: "app-condition-form",
-  templateUrl: "./condition-form.component.html",
-  styleUrls: ["./condition-form.component.css"],
+  selector: 'app-condition-form',
+  templateUrl: './condition-form.component.html',
+  styleUrls: ['./condition-form.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ConditionFormComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ConditionFormComponent
-
-  implements ControlValueAccessor, OnDestroy, OnInit {
-    checkOptions = [
-      { label: 'Apple', value: 'Apple', checked: true },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange' }
-    ];
-    items = [
-      'Short Answer',
-      'Paragraph',
-      'Multiple Choices',
-      'CheckBoxes',
-      'Dropdown',
-      'File Upload',
-      'Linear scal',
-      'Multiple choise grid',
-      'Checkbox Grid',
-      'Date',
-      'time',
-    ];
-    shortAnswer:any
-    multiple_choices:any
-    selectedCheckboxes:any
-    selectedDropdown:any
+  implements ControlValueAccessor, OnDestroy, OnInit
+{
+  checkOptions = [
+    { label: 'Apple', value: 'Apple', checked: true },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange' },
+  ];
+  items = [
+    'Short Answer',
+    'Paragraph',
+    'Multiple Choices',
+    'CheckBoxes',
+    'Dropdown',
+    'File Upload',
+    'Linear scal',
+    'Multiple choise grid',
+    'Checkbox Grid',
+    'Date',
+    'time',
+  ];
+  shortAnswer: any;
+  multiple_choices: any;
+  selectedCheckboxes: any;
+  selectedDropdown: any;
   @Input()
-  formLabel: string | number = "Label";
+  formLabel: string | number = 'Label';
 
   @Output()
   remove: EventEmitter<void> = new EventEmitter<void>();
+  @Output()
+  addCondition: EventEmitter<void> = new EventEmitter<void>();
+  _addCondition() {
+    this._conditionsFormArray.push(this._fb.control({ variable: null }));
+  }
+  get _conditionsFormArray(): FormArray {
+    return this._form.get('conditions') as FormArray;
+  }
 
+  get _groupsFormArray(): FormArray {
+    return this._form.get('groups') as FormArray;
+  }
   _form: FormGroup = this._fb.group({
     conjunctor: null,
     conditions: this._fb.array([]),
     groups: this._fb.array([]),
   });
 
-  private _onChange !: (
+  private _onChange!: (
     value: ConditionFormComponentData | null | undefined
   ) => void;
-  selectedValue = null
+  selectedValue = null;
+  addNewOption() {
+    if (this.selectedValue === 'Dropdown') {
+      // Add a new option to the Dropdown
+      this.items.push('New Dropdown Option');
+    } else if (this.selectedValue === 'CheckBoxes') {
+      // Add a new option to the CheckBoxes
+      this.checkOptions.push({ label: 'New Checkbox', value: 'New Checkbox' });
+    }
+  }
+
   private _destroy$: Subject<void> = new Subject<void>();
 
   constructor(private _fb: FormBuilder) {}
@@ -115,15 +137,17 @@ export class ConditionFormComponent
 
   private _createFormGroup() {
     this._form = this._fb.group({
-      variable: null
+      variable: null,
     });
   }
 
   private _setupObservables() {
-    this._form.valueChanges.pipe(takeUntil(this._destroy$)).subscribe(value => {
-      if (this._onChange) {
-        this._onChange(value);
-      }
-    });
+    this._form.valueChanges
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((value) => {
+        if (this._onChange) {
+          this._onChange(value);
+        }
+      });
   }
 }

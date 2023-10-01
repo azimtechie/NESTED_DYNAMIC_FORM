@@ -26,26 +26,6 @@
         -
       </button>
     </div>
-    <input
-      *ngIf="selectedValue == 'Short Answer'"
-      nz-input
-      placeholder="Basic usage"
-      [(ngModel)]="shortAnswer"
-    />
-    <textarea
-      *ngIf="selectedValue == 'Paragraph'"
-      nz-input
-      placeholder="Autosize height based on content lines"
-      nzAutosize
-    ></textarea>
-    <nz-radio-group
-      *ngIf="selectedValue == 'Multiple Choices'"
-      [ngModel]="multiple_choices"
-      (ngModelChange)="multiple_choices = $event"
-    >
-      <label nz-radio [nzValue]="'Option 1'">Option 1</label>
-      <label nz-radio [nzValue]="'Option 2'">Option 2</label>
-    </nz-radio-group>
     <div *ngFor="let options of checkOptions">
       <label
         nz-checkbox
@@ -55,14 +35,26 @@
         >{{ options.label }}</label
       >
     </div>
-    <nz-select
-    *ngIf="selectedValue ==='Dropdown'"
+    <!-- <nz-select
+      *ngIf="selectedValue === 'Dropdown'"
       [nzPlaceHolder]="'Dropdown Control'"
       [ngModel]="selectedDropdown"
       (ngModelChange)="selectedDropdown = $event"
     >
       <nz-option [nzLabel]="'Option 1'" [nzValue]="'Option 1'"></nz-option>
       <nz-option [nzLabel]="'Option 2'" [nzValue]="'Option 2'"></nz-option>
-    </nz-select>
+    </nz-select> -->
+  </div>
+  <div class="button_bar">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="addNewOption()"
+      [nzSize]="'large'"
+      nzShape="circle"
+      *ngIf="selectedValue === 'Dropdown' || selectedValue === 'CheckBoxes'"
+    >
+      +
+    </button>
   </div>
 </form>
