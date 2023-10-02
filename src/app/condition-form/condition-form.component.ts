@@ -58,6 +58,7 @@ export class ConditionFormComponent
   multiple_choices: any;
   selectedCheckboxes: any;
   selectedDropdown: any;
+  textInputs: { value: string }[] = [];
   @Input()
   formLabel: string | number = 'Label';
 
@@ -86,12 +87,23 @@ export class ConditionFormComponent
   ) => void;
   selectedValue = null;
   addNewOption() {
-    if (this.selectedValue === 'Dropdown') {
-      // Add a new option to the Dropdown
-      this.items.push('New Dropdown Option');
-    } else if (this.selectedValue === 'CheckBoxes') {
+    if (this.selectedValue === 'CheckBoxes') {
       // Add a new option to the CheckBoxes
-      this.checkOptions.push({ label: 'New Checkbox', value: 'New Checkbox' });
+      this.textInputs.push({ value: 'New Text Input' });
+    }
+  }
+  removeTextInput(index: number) {
+    this.textInputs.splice(index, 1);
+  }
+  listOfItem = ['jack', 'lucy'];
+  index = 0;
+  addItem(input: HTMLInputElement): void {
+    const value = input.value;
+    if (this.listOfItem.indexOf(value) === -1) {
+      this.listOfItem = [
+        ...this.listOfItem,
+        input.value || `New item ${this.index++}`,
+      ];
     }
   }
 

@@ -44,6 +44,19 @@
       <nz-option [nzLabel]="'Option 1'" [nzValue]="'Option 1'"></nz-option>
       <nz-option [nzLabel]="'Option 2'" [nzValue]="'Option 2'"></nz-option>
     </nz-select> -->
+    <nz-select *ngIf="selectedValue === 'Dropdown'" nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate" nzPlaceHolder="custom dropdown render">
+      <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item"></nz-option>
+    </nz-select>
+    <ng-template #renderTemplate>
+      <nz-divider></nz-divider>
+      <div class="container">
+        <input type="text" nz-input #inputElement />
+        <a class="add-item" (click)="addItem(inputElement)">
+          <span nz-icon nzType="plus"></span>
+          Add item
+        </a>
+      </div>
+    </ng-template>
   </div>
   <div class="button_bar">
     <button
@@ -52,9 +65,22 @@
       (click)="addNewOption()"
       [nzSize]="'large'"
       nzShape="circle"
-      *ngIf="selectedValue === 'Dropdown' || selectedValue === 'CheckBoxes'"
+      *ngIf="selectedValue === 'CheckBoxes'"
     >
       +
+    </button>
+  </div>
+  <div *ngFor="let textInput of textInputs; let i = index">
+    <input nz-input type="text" formControlName="{{ textInput.value }}" />
+    <button
+      nz-button
+      nzDanger
+      class="check_option"
+      nzType="primary"
+      (click)="removeTextInput(i)"
+      [nzSize]="'small'"
+    >
+      -
     </button>
   </div>
 </form>
