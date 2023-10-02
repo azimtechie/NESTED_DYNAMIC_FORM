@@ -15,17 +15,6 @@
         [nzValue]="item"
       ></nz-option>
     </nz-select>
-    <div class="col col-8 text-end">
-      <button
-        nz-button
-        nzDanger
-        nzType="primary"
-        (click)="remove.emit()"
-        [nzSize]="'large'"
-      >
-        -
-      </button>
-    </div>
     <div *ngFor="let options of checkOptions">
       <label
         nz-checkbox
@@ -35,15 +24,6 @@
         >{{ options.label }}</label
       >
     </div>
-    <!-- <nz-select
-      *ngIf="selectedValue === 'Dropdown'"
-      [nzPlaceHolder]="'Dropdown Control'"
-      [ngModel]="selectedDropdown"
-      (ngModelChange)="selectedDropdown = $event"
-    >
-      <nz-option [nzLabel]="'Option 1'" [nzValue]="'Option 1'"></nz-option>
-      <nz-option [nzLabel]="'Option 2'" [nzValue]="'Option 2'"></nz-option>
-    </nz-select> -->
     <nz-select *ngIf="selectedValue === 'Dropdown'" nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate" nzPlaceHolder="custom dropdown render">
       <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item"></nz-option>
     </nz-select>
