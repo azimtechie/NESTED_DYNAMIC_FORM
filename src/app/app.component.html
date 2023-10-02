@@ -1,30 +1,30 @@
 <div class="main_form_container">
-  <div class="header_container">
-    <div class="row template_search my-3 text-start">
-      <h4 class="col col-2">Template Name</h4>
-      <nz-select
-        class="col col-10"
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder="Select a Form Template"
-        [(ngModel)]="selectedValue"
-      >
-        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-      </nz-select>
-    </div>
-    <div class="row template_search my-3 text-start">
-      <h6 class="col col-2 text-secondary">Description</h6>
-      <input
-        class="col col-10"
-        nz-input
-        placeholder="Add description"
-        [(ngModel)]="Descriptionvalue"
-      />
-    </div>
-  </div>
   <form [formGroup]="_form">
+    <div class="header_container">
+      <div class="row template_search my-3 text-start">
+        <h4 class="col col-2">Template Name</h4>
+        <nz-select
+          class="col col-10"
+          nzShowSearch
+          nzAllowClear
+          formControlName="templateName"
+          nzPlaceHolder="Select a Form Template"
+        >
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+          <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+        </nz-select>
+      </div>
+      <div class="row template_search my-3 text-start">
+        <h6 class="col col-2 text-secondary">Description</h6>
+        <input
+          class="col col-10"
+          nz-input
+          placeholder="Add description"
+          formControlName="description"
+        />
+      </div>
+    </div>
     <ng-container formArrayName="groups">
       <ng-container
         *ngFor="let group of _groupsFormArray?.controls; index as i"
@@ -39,14 +39,14 @@
     </ng-container>
   </form>
   <button
-        nz-button
-        class="mt-5 btn btn-primary float-end"
-        nzType="primary"
-        (click)="_addGroup()"
-        [nzSize]="'large'"
-      >
-        +
-      </button>
+    nz-button
+    class="mt-5 btn btn-primary float-end"
+    nzType="primary"
+    (click)="_addGroup()"
+    [nzSize]="'large'"
+  >
+    +
+  </button>
 </div>
 <br />
 <br />
