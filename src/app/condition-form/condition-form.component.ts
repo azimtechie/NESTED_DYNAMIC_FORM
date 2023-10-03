@@ -18,7 +18,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 export interface ConditionFormComponentData {
-  variable: any;
+  id: any;
+  values: any;
 }
 
 @Component({
@@ -36,80 +37,42 @@ export interface ConditionFormComponentData {
 export class ConditionFormComponent
   implements ControlValueAccessor, OnDestroy, OnInit
 {
-  checkOptions = [
-    { label: 'Apple', value: 'Apple', checked: true },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange' },
-  ];
-  items = [
-    'Short Answer',
-    'Paragraph',
-    'Multiple Choices',
-    'CheckBoxes',
-    'Dropdown',
-    'File Upload',
-    'Linear scal',
-    'Multiple choise grid',
-    'Checkbox Grid',
-    'Date',
-    'time',
-  ];
-  shortAnswer: any;
-  multiple_choices: any;
-  selectedCheckboxes: any;
-  selectedDropdown: any;
-  textInputs: { value: string }[] = [];
   @Input()
   formLabel: string | number = 'Label';
-
   @Output()
   remove: EventEmitter<void> = new EventEmitter<void>();
   @Output()
   addCondition: EventEmitter<void> = new EventEmitter<void>();
   _addCondition() {
-    this._conditionsFormArray.push(this._fb.control({ variable: null }));
+    this._conditionsFormArray.push(this._fb.control({ id: 0, values: null }));
   }
   get _conditionsFormArray(): FormArray {
-    return this._form.get('conditions') as FormArray;
+    return this._form.get('controlValues') as FormArray;
   }
 
   get _groupsFormArray(): FormArray {
-    return this._form.get('groups') as FormArray;
+    return this._form.get('templateControls') as FormArray;
   }
   _form: FormGroup = this._fb.group({
-    conjunctor: null,
-    conditions: this._fb.array([]),
-    groups: this._fb.array([]),
+    controlId: null,
+    label: null,
+    controlValues: this._fb.array([]),
+    templateControls: this._fb.array([]),
   });
 
   private _onChange!: (
     value: ConditionFormComponentData | null | undefined
   ) => void;
-  selectedValue = null;
-  addNewOption() {
-    if (this.selectedValue === 'CheckBoxes') {
-      // Add a new option to the CheckBoxes
-      this.textInputs.push({ value: 'New Text Input' });
-    }
-  }
-  removeTextInput(index: number) {
-    this.textInputs.splice(index, 1);
-  }
-  listOfItem = ['jack', 'lucy'];
-  index = 0;
-  addItem(input: HTMLInputElement): void {
-    const value = input.value;
-    if (this.listOfItem.indexOf(value) === -1) {
-      this.listOfItem = [
-        ...this.listOfItem,
-        input.value || `New item ${this.index++}`,
-      ];
-    }
-  }
 
   private _destroy$: Subject<void> = new Subject<void>();
 
   constructor(private _fb: FormBuilder) {}
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit() {
     this._createFormGroup();
@@ -137,19 +100,10 @@ export class ConditionFormComponent
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-    // TODO: implement this method
-    // throw new Error("registerOnTouched not implemented");
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    // TODO: implement this method
-    // throw new Error("setDisabledState not implemented");
-  }
-
   private _createFormGroup() {
     this._form = this._fb.group({
-      variable: null,
+      id: 0,
+      values: null,
     });
   }
 

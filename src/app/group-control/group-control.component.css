@@ -4,12 +4,19 @@ nz-select {
 .group_control_form {
   padding: 20px;
   margin: 10px;
-  border: 1px solid black ;
+  border: 1px solid black;
 }
 .ant-input {
   /* width: auto !important; */
   width: 200px;
 }
-.switch_label{
+.switch_label {
   margin-right: 8px;
+}
+.check_remove_btn {
+  width: 25px;
+  margin-left: 12px;
+}
+.add_check_item {
+  margin: 0 5px 5px 0;
 }

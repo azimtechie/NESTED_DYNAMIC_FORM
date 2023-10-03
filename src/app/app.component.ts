@@ -1,3 +1,4 @@
+import { NonNullAssert } from '@angular/compiler';
 import { Component, VERSION } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 
@@ -9,9 +10,10 @@ import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 export class AppComponent {
   Descriptionvalue?: string;
   _form: FormGroup = this.fb.group({
-    description: null,
+    templateId: null,
     templateName: null,
-    groups: this.fb.array([]),
+    description: null,
+    templateControls: this.fb.array([]),
   });
 
   constructor(private fb: FormBuilder) {
@@ -21,8 +23,11 @@ export class AppComponent {
   _addGroup() {
     this._groupsFormArray.push(
       this.fb.control({
-        conditions: [],
-        groups: [],
+        controlValues: [],
+        parentId: 0,
+        isRequired: true,
+        sequence: 0,
+        templateControls: [],
       })
     );
   }
@@ -32,14 +37,15 @@ export class AppComponent {
   }
 
   get _groupsFormArray(): FormArray {
-    return this._form.get('groups') as FormArray;
+    return this._form.get('templateControls') as FormArray;
   }
 
   private _createForm() {
     this._form = this.fb.group({
+      templateId: null,
       templateName: null,
       description: null,
-      groups: this.fb.array([]),
+      templateControls: this.fb.array([]),
     });
   }
 }
