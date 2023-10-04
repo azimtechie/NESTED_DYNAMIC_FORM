@@ -68,31 +68,14 @@ export class GroupControlComponent
   ];
   values = this.checkOptions.map((e) => e.value);
   items = [
-    'Short Answer',
-    'Paragraph',
-    'Multiple Choices',
-    'CheckBoxes',
-    'Dropdown',
-    'File Upload',
-    'Linear scal',
-    'Multiple choise grid',
-    'Checkbox Grid',
-    'Date',
-    'time',
+    { label: 'Dropdown', id: 1 },
+    { label: 'Checkbox', id: 2 },
+    { label: 'Textbox', id: 3 },
+    { label: 'Multiline textbox', id: 4 },
+    { label: 'Date time', id: 5 },
+    { label: 'Yes/No', id: 6 },
   ];
-  itemsObj = [
-    { label: 'Short Answer', id: 0 },
-    { label: 'Paragraph', id: 1 },
-    { label: 'Multiple Choices', id: 2 },
-    { label: 'CheckBoxes', id: 3 },
-    { label: 'Dropdown', id: 4 },
-    { label: 'File Upload', id: 5 },
-    { label: 'Linear scale', id: 6 },
-    { label: 'Multiple choice grid', id: 7 },
-    { label: 'Checkbox Grid', id: 8 },
-    { label: 'Date', id: 9 },
-    { label: 'Time', id: 10 },
-  ];
+
   shortAnswer: any;
   multiple_choices: any;
   selectedCheckboxes: any;
@@ -117,10 +100,7 @@ export class GroupControlComponent
     controlValuesArray.at(index).patchValue({ id: 0, value });
   }
   addNewOption() {
-    if (
-      this.selectedValue === 'CheckBoxes' ||
-      this.selectedValue === 'Dropdown'
-    ) {
+    if (this.selectedValue === 2 || this.selectedValue === 1) {
       const controlValuesArray = this._form.get('controlValues') as FormArray;
       controlValuesArray.push(this._fb.group({ id: 0, value: null }));
       this.textInputs.push({ value: 'New Text Input' });
@@ -195,7 +175,9 @@ export class GroupControlComponent
   _deleteGroupFromArray(index: number) {
     this._groupsFormArray.removeAt(index);
   }
-
+  onDropdownChange() {
+    console.log('Selected option:', this.selectedValue);
+  }
   _addGroup() {
     this._groupsFormArray.push(
       this._fb.control({

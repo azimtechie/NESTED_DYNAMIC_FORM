@@ -1,7 +1,7 @@
 <form [formGroup]="_form">
   <div class="group_control_form">
-    <!-- <label class="switch_label" for="switchValue">Require</label> -->
-    <!-- <nz-switch class=" mb-3" [(ngModel)]="switchValue"></nz-switch> -->
+    <label class="switch_label" for="switchValue">Require</label>
+    <nz-switch class="mb-3" formControlName="isRequired"></nz-switch>
     <div class="row template_search my-3 text-start">
       <h6 class="col col-2">{{ formLabel }}</h6>
       <input
@@ -20,15 +20,16 @@
         formControlName="controlId"
         nzPlaceHolder="Select Control"
         [(ngModel)]="selectedValue"
+        (change)="onDropdownChange()"
       >
         <nz-option
           *ngFor="let item of items"
-          [nzLabel]="item"
-          [nzValue]="item"
+          [nzLabel]="item.label"
+          [nzValue]="item.id"
         ></nz-option>
       </nz-select>
     </div>
-    <div *ngIf="selectedValue === 'CheckBoxes' || selectedValue === 'Dropdown'">
+    <div *ngIf="selectedValue === 1 || selectedValue === 2">
       <div *ngFor="let textInput of textInputs; let i = index">
         <input
           class="add_check_item"
@@ -54,7 +55,7 @@
           (click)="addNewOption()"
           [nzSize]="'large'"
           nzShape="circle"
-          *ngIf="selectedValue === 'CheckBoxes' || selectedValue === 'Dropdown'"
+          *ngIf="selectedValue === 1 || selectedValue === 2"
         >
           +
         </button>

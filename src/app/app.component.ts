@@ -10,7 +10,7 @@ import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 export class AppComponent {
   Descriptionvalue?: string;
   _form: FormGroup = this.fb.group({
-    templateId: null,
+    templateId: 0,
     templateName: null,
     description: null,
     templateControls: this.fb.array([]),
@@ -42,7 +42,7 @@ export class AppComponent {
 
   private _createForm() {
     this._form = this.fb.group({
-      templateId: null,
+      templateId: 0,
       templateName: null,
       description: null,
       templateControls: this.fb.array([]),
