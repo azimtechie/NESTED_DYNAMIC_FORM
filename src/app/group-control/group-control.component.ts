@@ -50,6 +50,7 @@ export class GroupControlComponent
   @Output()
   remove: EventEmitter<void> = new EventEmitter<void>();
   checkboxItems: { value: string }[] = [];
+  selectedCheckboxValues: string[] = [];
   removeCheckboxOption(index: number) {
     this.checkOptions.splice(index, 1);
   }
@@ -65,6 +66,7 @@ export class GroupControlComponent
     { label: 'Pear', value: 'Pear' },
     { label: 'Orange', value: 'Orange' },
   ];
+  values = this.checkOptions.map((e) => e.value);
   items = [
     'Short Answer',
     'Paragraph',
@@ -95,7 +97,7 @@ export class GroupControlComponent
   multiple_choices: any;
   selectedCheckboxes: any;
   selectedDropdown: any;
-  textInputs: { value: string }[] = [];
+  textInputs: { value: string }[] = [{ value: 'New Text Input' }];
   listOfItem = ['jack', 'lucy'];
   index = 0;
   addItem(input: HTMLInputElement): void {
@@ -107,12 +109,26 @@ export class GroupControlComponent
       ];
     }
   }
+  handleTextInputChange(index: number, event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const value = inputElement.value;
+
+    const controlValuesArray = this._form.get('controlValues') as FormArray;
+    controlValuesArray.at(index).patchValue({ id: 0, value });
+  }
   addNewOption() {
-    if (this.selectedValue === 'CheckBoxes') {
+    if (
+      this.selectedValue === 'CheckBoxes' ||
+      this.selectedValue === 'Dropdown'
+    ) {
+      const controlValuesArray = this._form.get('controlValues') as FormArray;
+      controlValuesArray.push(this._fb.group({ id: 0, value: null }));
       this.textInputs.push({ value: 'New Text Input' });
     }
   }
   removeTextInput(index: number) {
+    const controlValuesArray = this._form.get('controlValues') as FormArray;
+    controlValuesArray.removeAt(index);
     this.textInputs.splice(index, 1);
   }
   _form: FormGroup = this._fb.group({
@@ -173,7 +189,7 @@ export class GroupControlComponent
   }
 
   _addCondition() {
-    this._conditionsFormArray.push(this._fb.control({ id: null, value: null }));
+    this._conditionsFormArray.push(this._fb.control({ id: 0, value: null }));
   }
 
   _deleteGroupFromArray(index: number) {
