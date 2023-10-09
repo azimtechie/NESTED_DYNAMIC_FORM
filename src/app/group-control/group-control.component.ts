@@ -18,9 +18,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 export interface GroupControlComponentData {
-  controlId: null;
-  label: null;
-  templateControls: GroupControlComponentData[];
+  ControlId: null;
+  Label: null;
+  Childs: GroupControlComponentData[];
 }
 
 @Component({
@@ -42,7 +42,7 @@ export class GroupControlComponent
   @Input()
   formLabel: string | number = 'Label';
   @Input()
-  controlId!: string;
+  ControlId!: string;
 
   @Output()
   remove: EventEmitter<void> = new EventEmitter<void>();
@@ -93,26 +93,26 @@ export class GroupControlComponent
     const inputElement = event.target as HTMLInputElement;
     const value = inputElement.value;
 
-    const controlValuesArray = this._form.get('controlValues') as FormArray;
-    controlValuesArray.at(index).patchValue({ id: 0, value });
+    const controlValuesArray = this._form.get('ControlValues') as FormArray;
+    controlValuesArray.at(index).patchValue({ Id: 0, value });
   }
   addNewOption() {
     if (this.selectedValue === 2 || this.selectedValue === 1) {
-      const controlValuesArray = this._form.get('controlValues') as FormArray;
-      controlValuesArray.push(this._fb.group({ id: 0, value: null }));
+      const controlValuesArray = this._form.get('ControlValues') as FormArray;
+      controlValuesArray.push(this._fb.group({ Id: 0, value: null }));
       this.textInputs.push({ value: 'New Text Input' });
     }
   }
   removeTextInput(index: number) {
-    const controlValuesArray = this._form.get('controlValues') as FormArray;
+    const controlValuesArray = this._form.get('ControlValues') as FormArray;
     controlValuesArray.removeAt(index);
     this.textInputs.splice(index, 1);
   }
   _form: FormGroup = this._fb.group({
-    controlId: null,
-    label: null,
-    controlValues: this._fb.array([]),
-    templateControls: this._fb.array([]),
+    ControlId: null,
+    Label: null,
+    ControlValues: this._fb.array([]),
+    Childs: this._fb.array([]),
   });
 
   private _onChange!: (
@@ -166,7 +166,7 @@ export class GroupControlComponent
   }
 
   _addCondition() {
-    this._conditionsFormArray.push(this._fb.control({ id: 0, value: null }));
+    this._conditionsFormArray.push(this._fb.control({ Id: 0, Values: null }));
   }
 
   _deleteGroupFromArray(index: number) {
@@ -178,32 +178,32 @@ export class GroupControlComponent
   _addGroup() {
     this._groupsFormArray.push(
       this._fb.control({
-        controlValues: [],
-        parentId: 0,
-        isRequired: true,
-        sequence: 0,
-        templateControls: [],
+        ControlValues: [],
+        ParentId: 0,
+        IsRequired: true,
+        Sequence: 0,
+        Childs: [],
       })
     );
   }
 
   get _conditionsFormArray(): FormArray {
-    return this._form.get('controlValues') as FormArray;
+    return this._form.get('ControlValues') as FormArray;
   }
 
   get _groupsFormArray(): FormArray {
-    return this._form.get('templateControls') as FormArray;
+    return this._form.get('Childs') as FormArray;
   }
 
   private _createFormGroup() {
     this._form = this._fb.group({
-      controlId: null,
-      label: null,
-      controlValues: this._fb.array([]),
-      parentId: 0,
-      isRequired: true,
-      sequence: 0,
-      templateControls: this._fb.array([]),
+      ControlId: null,
+      Label: null,
+      ControlValues: this._fb.array([]),
+      ParentId: 0,
+      IsRequired: true,
+      Sequence: 0,
+      Childs: this._fb.array([]),
     });
 
     // add one condition on the next tick, after the form creation

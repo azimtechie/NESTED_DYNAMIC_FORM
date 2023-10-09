@@ -1,14 +1,14 @@
 <form [formGroup]="_form">
   <div class="group_control_form">
     <label class="switch_label" for="switchValue">Require</label>
-    <nz-switch class="mb-3" formControlName="isRequired"></nz-switch>
+    <nz-switch class="mb-3" formControlName="IsRequired"></nz-switch>
     <div class="row template_search my-3 text-start">
       <h6 class="col col-2">{{ formLabel }}</h6>
       <input
         class="col col-10"
         nz-input
         placeholder="Enter Travel Type"
-        formControlName="label"
+        formControlName="Label"
       />
     </div>
     <div class="row template_search my-3 text-start">
@@ -17,7 +17,7 @@
         class="col col-2"
         nzShowSearch
         nzAllowClear
-        formControlName="controlId"
+        formControlName="ControlId"
         nzPlaceHolder="Select Control"
         [(ngModel)]="selectedValue"
         (change)="onDropdownChange()"
@@ -62,13 +62,13 @@
       </div>
     </div>
     <div>
-      <ng-container formArrayName="templateControls">
+      <ng-container formArrayName="TemplateControls">
         <app-group-control
           *ngFor="let s of _groupsFormArray?.controls; index as i"
           (remove)="_deleteGroupFromArray(i)"
           [formControlName]="i"
           [formLabel]="'Label '"
-          [controlId]="controlId"
+          [ControlId]="ControlId"
         >
         </app-group-control>
       </ng-container>

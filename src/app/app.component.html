@@ -7,7 +7,7 @@
           class="col col-10"
           nzShowSearch
           nzAllowClear
-          formControlName="templateName"
+          formControlName="TemplateName"
           nzPlaceHolder="Select a Form Template"
         >
           <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
@@ -21,11 +21,11 @@
           class="col col-10"
           nz-input
           placeholder="Add description"
-          formControlName="description"
+          formControlName="Description"
         />
       </div>
     </div>
-    <ng-container formArrayName="templateControls">
+    <ng-container formArrayName="TemplateControls">
       <ng-container
         *ngFor="let group of _groupsFormArray?.controls; index as i"
       >

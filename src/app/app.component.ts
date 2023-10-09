@@ -10,107 +10,98 @@ import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 export class AppComponent {
   Descriptionvalue?: string;
   _form: FormGroup = this.fb.group({
-    templateId: 0,
-    templateName: null,
-    description: null,
-    templateControls: this.fb.array([]),
+    TemplateId: 0,
+    TemplateName: null,
+    Description: null,
+    TemplateControls: this.fb.array([]),
   });
 
   constructor(private fb: FormBuilder) {
     this._createForm();
   }
   jsonData = {
-    templateId: 11,
-    templateName: 'Ahmedabad Player Information',
-    description: 'Ahmedabad Player Information for training',
-    templateControls: [
+    TemplateId: 13,
+    TemplateName: 'Jamnagar Player Information',
+    Description: 'Jamnagar Player Information for training',
+    TemplateControls: [
       {
-        controlId: 3,
+        ControlId: 3,
         ControlName: 'Textbox',
-        label: 'Full Name',
-        controlValues: [],
-        id: 73,
-        parentId: null,
-        isRequired: true,
-        sequence: 1,
-        templateControls: [],
+        Label: 'Full Name',
+        ControlValues: [],
+        Id: 138,
+        ParentId: null,
+        IsRequired: true,
+        Sequence: 1,
+        Childs: [],
       },
       {
-        controlId: 5,
+        ControlId: 5,
         ControlName: 'datetime',
-        label: 'Date of Birth',
-        controlValues: [],
-        id: 74,
-        parentId: null,
-        isRequired: true,
-        sequence: 2,
-        templateControls: [],
+        Label: 'Date of Birth',
+        ControlValues: [],
+        Id: 139,
+        ParentId: null,
+        IsRequired: true,
+        Sequence: 2,
+        Childs: [],
       },
       {
-        controlId: 1,
+        ControlId: 1,
         ControlName: 'Dropdown',
-        label: 'Gender',
-        controlValues: [
-          {
-            id: 102,
-            value: 'Male',
-          },
-          {
-            id: 103,
-            value: 'Female',
-          },
-          {
-            id: 104,
-            value: 'Other',
-          },
+        Label: 'Gender',
+        ControlValues: [
+          { Id: 180, Values: 'Male' },
+          { Id: 181, Values: 'Female' },
+          { Id: 182, Values: 'Other' },
         ],
-        id: 75,
-        parentId: null,
-        isRequired: true,
-        sequence: 3,
-        templateControls: [],
+        Id: 140,
+        ParentId: null,
+        IsRequired: true,
+        Sequence: 3,
+        Childs: [],
       },
       {
-        controlId: 3,
+        ControlId: 3,
         ControlName: 'Textbox',
-        label: 'Contact Number',
-        controlValues: [],
-        id: 76,
-        parentId: null,
-        isRequired: true,
-        sequence: 4,
-        templateControls: [
+        Label: 'Contact Number',
+        ControlValues: [],
+        Id: 141,
+        ParentId: null,
+        IsRequired: true,
+        Sequence: 4,
+        Childs: [
           {
-            controlId: 3,
+            ControlId: 3,
             ControlName: 'Textbox',
-            label: 'Contact Number Secondary',
-            controlValues: [],
-            id: 77,
-            parentId: 76,
-            isRequired: true,
-            sequence: 5,
-            templateControls: [],
+            Label: 'Contact Number Secondary',
+            ControlValues: [],
+            Id: 142,
+            ParentId: 141,
+            IsRequired: true,
+            Sequence: 17,
+            Childs: [],
           },
           {
-            controlId: 3,
+            ControlId: 3,
             ControlName: 'Textbox',
-            label: 'Phone Number',
-            controlValues: [],
-            id: 78,
-            parentId: 76,
-            isRequired: true,
-            sequence: 6,
-            templateControls: [
+            Label: 'Phone Number',
+            ControlValues: [],
+            Id: 143,
+            ParentId: 141,
+            IsRequired: true,
+            Sequence: 18,
+            Childs: [
               {
-                controlId: 3,
+                ControlId: 3,
                 ControlName: 'Textbox',
-                label: 'Contact Number Secondary',
-                controlValues: [],
-                id: 79,
-                parentId: 78,
-                isRequired: true,
-                sequence: 7,
-                templateControls: [],
+                Label: 'Contact Number Secondary',
+                ControlValues: [],
+                Id: 144,
+                ParentId: 143,
+                IsRequired: true,
+                Sequence: 19,
+                Childs: [],
               },
             ],
           },
@@ -124,11 +115,11 @@ export class AppComponent {
   _addGroup() {
     this._groupsFormArray.push(
       this.fb.control({
-        controlValues: [],
-        parentId: 0,
-        isRequired: true,
-        sequence: 0,
-        templateControls: [],
+        ControlValues: [],
+        ParentId: 0,
+        IsRequired: true,
+        Sequence: 0,
+        Childs: [],
       })
     );
   }
@@ -138,15 +129,15 @@ export class AppComponent {
   }
 
   get _groupsFormArray(): FormArray {
-    return this._form.get('templateControls') as FormArray;
+    return this._form.get('TemplateControls') as FormArray;
   }
 
   private _createForm() {
     this._form = this.fb.group({
-      templateId: 0,
-      templateName: null,
-      description: null,
-      templateControls: this.fb.array([]),
+      TemplateId: 0,
+      TemplateName: null,
+      Description: null,
+      TemplateControls: this.fb.array([]),
     });
   }
 }

@@ -1,0 +1,261 @@
+{
+  "TemplateId": 13,
+  "TemplateName": "Jamnagar Player Information",
+  "Description": "Jamnagar Player Information for training",
+  "TemplateControls": [
+    {
+      "ControlId": 3,
+      "ControlName": "Textbox",
+      "Label": "Full Name",
+      "ControlValues": [],
+      "Id": 138,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 1,
+      "Childs": []
+    },
+    {
+      "ControlId": 5,
+      "ControlName": "datetime",
+      "Label": "Date of Birth",
+      "ControlValues": [],
+      "Id": 139,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 2,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "Gender",
+      "ControlValues": [
+        { "Id": 180, "Values": "Male" },
+        { "Id": 181, "Values": "Female" },
+        { "Id": 182, "Values": "Other" }
+      ],
+      "Id": 140,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 3,
+      "Childs": []
+    },
+    {
+      "ControlId": 3,
+      "ControlName": "Textbox",
+      "Label": "Contact Number",
+      "ControlValues": [],
+      "Id": 141,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 4,
+      "Childs": [
+        {
+          "ControlId": 3,
+          "ControlName": "Textbox",
+          "Label": "Contact Number Secondary",
+          "ControlValues": [],
+          "Id": 142,
+          "ParentId": 141,
+          "IsRequired": true,
+          "Sequence": 17,
+          "Childs": []
+        },
+        {
+          "ControlId": 3,
+          "ControlName": "Textbox",
+          "Label": "Phone Number",
+          "ControlValues": [],
+          "Id": 143,
+          "ParentId": 141,
+          "IsRequired": true,
+          "Sequence": 18,
+          "Childs": [
+            {
+              "ControlId": 3,
+              "ControlName": "Textbox",
+              "Label": "Contact Number Secondary",
+              "ControlValues": [],
+              "Id": 144,
+              "ParentId": 143,
+              "IsRequired": true,
+              "Sequence": 19,
+              "Childs": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ControlId": 3,
+      "ControlName": "Textbox",
+      "Label": "Email Address",
+      "ControlValues": [],
+      "Id": 145,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 5,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "Preferred Training Days",
+      "ControlValues": [
+        { "Id": 183, "Values": "Monday" },
+        { "Id": 184, "Values": "Tuesday" },
+        { "Id": 185, "Values": "Wednesday" },
+        { "Id": 186, "Values": "Thursday" },
+        { "Id": 187, "Values": "Friday" },
+        { "Id": 188, "Values": "Saturday" },
+        { "Id": 189, "Values": "Sunday" }
+      ],
+      "Id": 146,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 6,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "Preferred Training Time",
+      "ControlValues": [
+        { "Id": 190, "Values": "Morning" },
+        { "Id": 191, "Values": "Afternoon" },
+        { "Id": 192, "Values": "Evening" }
+      ],
+      "Id": 147,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 7,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "Skill Level",
+      "ControlValues": [
+        { "Id": 193, "Values": "Beginner" },
+        { "Id": 194, "Values": "Intermediate" },
+        { "Id": 195, "Values": "Advanced" }
+      ],
+      "Id": 148,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 8,
+      "Childs": [
+        {
+          "ControlId": 1,
+          "ControlName": "Dropdown",
+          "Label": "Experience",
+          "ControlValues": [
+            { "Id": 196, "Values": "Total" },
+            { "Id": 197, "Values": "Relevant" }
+          ],
+          "Id": 149,
+          "ParentId": 148,
+          "IsRequired": true,
+          "Sequence": 20,
+          "Childs": []
+        }
+      ]
+    },
+    {
+      "ControlId": 4,
+      "ControlName": "multiline textbox",
+      "Label": "Previous Hockey Experience",
+      "ControlValues": [],
+      "Id": 150,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 9,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "Any Medical Conditions?",
+      "ControlValues": [
+        { "Id": 198, "Values": "Yes" },
+        { "Id": 199, "Values": "No" }
+      ],
+      "Id": 151,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 10,
+      "Childs": []
+    },
+    {
+      "ControlId": 4,
+      "ControlName": "multiline textbox",
+      "Label": "If Yes, Please Specify",
+      "ControlValues": [],
+      "Id": 152,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 11,
+      "Childs": []
+    },
+    {
+      "ControlId": 3,
+      "ControlName": "Textbox",
+      "Label": "Emergency Contact Name",
+      "ControlValues": [],
+      "Id": 153,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 12,
+      "Childs": []
+    },
+    {
+      "ControlId": 3,
+      "ControlName": "Textbox",
+      "Label": "Emergency Contact Number",
+      "ControlValues": [],
+      "Id": 154,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 13,
+      "Childs": []
+    },
+    {
+      "ControlId": 4,
+      "ControlName": "multiline textbox",
+      "Label": "What are your goals for this training program?",
+      "ControlValues": [],
+      "Id": 155,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 14,
+      "Childs": []
+    },
+    {
+      "ControlId": 1,
+      "ControlName": "Dropdown",
+      "Label": "How did you hear about our hockey training program?",
+      "ControlValues": [
+        { "Id": 200, "Values": "Friend" },
+        { "Id": 201, "Values": "Website" },
+        { "Id": 202, "Values": "Social Media" },
+        { "Id": 203, "Values": "Other" }
+      ],
+      "Id": 156,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 15,
+      "Childs": []
+    },
+    {
+      "ControlId": 2,
+      "ControlName": "Checkbox",
+      "Label": "I agree to the Terms and Conditions",
+      "ControlValues": [{ "Id": 204, "Values": "Yes" }],
+      "Id": 157,
+      "ParentId": null,
+      "IsRequired": true,
+      "Sequence": 16,
+      "Childs": []
+    }
+  ]
+}
