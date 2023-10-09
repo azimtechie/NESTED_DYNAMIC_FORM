@@ -16,13 +16,10 @@ import {
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ConditionFormComponentData } from '../condition-form/condition-form.component';
-import { NzUploadListComponent } from 'ng-zorro-antd/upload';
 
 export interface GroupControlComponentData {
   controlId: null;
   label: null;
-  controlValues: ConditionFormComponentData[];
   templateControls: GroupControlComponentData[];
 }
 

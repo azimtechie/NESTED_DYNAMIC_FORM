@@ -4,8 +4,6 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { AppComponent } from './app.component';
 import { GroupControlComponent } from './group-control/group-control.component';
-import { ConditionFormComponent } from './condition-form/condition-form.component';
-import { ActionButtonsBarComponent } from './action-buttons-bar/action-buttons-bar.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -24,12 +22,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NgZorroAntdModule,
   ],
-  declarations: [
-    AppComponent,
-    GroupControlComponent,
-    ConditionFormComponent,
-    ActionButtonsBarComponent,
-  ],
+  declarations: [AppComponent, GroupControlComponent],
   providers: [FormBuilder, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
